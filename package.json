@@ -1,6 +1,6 @@
 {
-  "name": "terriajs-map",
-  "version": "0.0.1",
+  "name": "padus-map",
+  "version": "1.0.0",
   "description": "Geospatial catalog explorer based on TerriaJS",
   "engines": {
     "node": ">= 5.1.0",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/TerriaJS/map"
+    "url": "https://my.usgs.gov/bitbucket/projects/BCB/repos/padus/browse"
   },
   "dependencies": {
     "terriajs-server": "^2.5.0"

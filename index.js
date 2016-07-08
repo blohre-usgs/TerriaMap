@@ -47,8 +47,9 @@ var AnimationViewModel = require('terriajs/lib/ViewModels/AnimationViewModel');
 var BingMapsSearchProviderViewModel = require('terriajs/lib/ViewModels/BingMapsSearchProviderViewModel');
 var BrandBarViewModel = require('terriajs/lib/ViewModels/BrandBarViewModel');
 var CatalogItemNameSearchProviderViewModel = require('terriajs/lib/ViewModels/CatalogItemNameSearchProviderViewModel');
-var createAustraliaBaseMapOptions = require('terriajs/lib/ViewModels/createAustraliaBaseMapOptions');
-var createGlobalBaseMapOptions = require('terriajs/lib/ViewModels/createGlobalBaseMapOptions');
+var createPadusBaseMapOptions = require('terriajs/lib/ViewModels/createPadusBaseMapOptions');
+// var createAustraliaBaseMapOptions = require('terriajs/lib/ViewModels/createAustraliaBaseMapOptions');
+// var createGlobalBaseMapOptions = require('terriajs/lib/ViewModels/createGlobalBaseMapOptions');
 var createToolsMenuItem = require('terriajs/lib/ViewModels/createToolsMenuItem');
 var DataCatalogTabViewModel = require('terriajs/lib/ViewModels/DataCatalogTabViewModel');
 var DistanceLegendViewModel = require('terriajs/lib/ViewModels/DistanceLegendViewModel');
@@ -66,6 +67,7 @@ var NavigationViewModel = require('terriajs/lib/ViewModels/NavigationViewModel')
 var NowViewingAttentionGrabberViewModel = require('terriajs/lib/ViewModels/NowViewingAttentionGrabberViewModel');
 var NowViewingTabViewModel = require('terriajs/lib/ViewModels/NowViewingTabViewModel');
 var PopupMessageViewModel = require('terriajs/lib/ViewModels/PopupMessageViewModel');
+var ScienceBaseInfoViewModel = require('terriajs/lib/ViewModels/ScienceBaseInfoViewModel');
 var PopupMessageConfirmationViewModel = require('terriajs/lib/ViewModels/PopupMessageConfirmationViewModel');
 var SearchTabViewModel = require('terriajs/lib/ViewModels/SearchTabViewModel');
 var SettingsPanelViewModel = require('terriajs/lib/ViewModels/SettingsPanelViewModel');
@@ -136,11 +138,9 @@ terria.start({
     var ui = document.getElementById('ui');
 
     // Create the various base map options.
-    var australiaBaseMaps = createAustraliaBaseMapOptions(terria);
-    var globalBaseMaps = createGlobalBaseMapOptions(terria, configuration.bingMapsKey);
-
-    var allBaseMaps = australiaBaseMaps.concat(globalBaseMaps);
-    var initialBaseMap = terria.configParameters.initialBaseMap || 'Bing Maps Aerial with Labels';
+    var allBaseMaps = createPadusBaseMapOptions(terria);
+    // var allBaseMaps = createGlobalBaseMapOptions(terria);
+    var initialBaseMap = terria.configParameters.initialBaseMap || 'USGS Topo';
     selectBaseMap(terria, allBaseMaps, initialBaseMap, true);
 
     // Create the Settings / Map panel.
@@ -153,7 +153,7 @@ terria.start({
 
     var brandBarElements = defaultValue(terria.configParameters.brandBarElements, [
             '',
-            '<a target="_blank" href="http://terria.io"><img src="images/terria_logo.png" height="52" title="Version: {{ version }}" /></a>',
+            '<a style="float: left;" target="_blank" href="http://www.usgs.gov"><img src="images/usgs-logo-transparent.png" height="52" title="Version: {{version}}" /></a>',
             ''
         ]);
     brandBarElements = brandBarElements.map(function(s) { return s.replace(/\{\{\s*version\s*\}\}/, version);});
@@ -161,7 +161,8 @@ terria.start({
     // Create the brand bar.
     BrandBarViewModel.create({
         container: ui,
-        elements: brandBarElements
+        elements: brandBarElements,
+        bindElementIds: terria.configParameters.bindBrandBarElements
     });
 
     // Create the menu bar.
@@ -204,22 +205,7 @@ terria.start({
                         terria: terria
                     });
                 }
-            })/*,
-            new MenuBarItemViewModel({
-                label: 'Related Maps',
-                tooltip: 'View other maps in the NationalMap family.',
-                svgPath: svgRelated,
-                svgPathWidth: 14,
-                svgPathHeight: 13,
-                callback: function() {
-                    PopupMessageViewModel.open(ui, {
-                        title: 'Related Maps',
-                        message: require('./lib/Views/RelatedMaps.html'),
-                        width: 600,
-                        height: 430
-                    });
-                }
-            })*/
+            })
         ]
     });
 
@@ -327,6 +313,25 @@ terria.start({
     MapProgressBarViewModel.create({
         container: document.getElementById('cesiumContainer'),
         terria: terria
+    });
+
+    //Add ScienceBase Information about the maps to the DataCatalog tab in the explorer panel
+    // and links to more information on the lower left corner of the map
+    ScienceBaseInfoViewModel.create({
+        url: "https://www.sciencebase.gov/catalog/item/56b9ffabe4b08d617f648ee1?format=json"
+    });
+
+    //Display the USGS provisional software release warning
+    PopupMessageViewModel.open('ui', {
+        title: 'Provisional Software Disclaimer',
+        width: 600,
+        message: "Software is provisional and subject to revision until it has been thoroughly reviewed and received \
+final approval. Provisional software may be inaccurate or contain errors due to an iterative development \
+process. Subsequent review based on automated and human testing may result in significant revisions to the \
+software. Users are cautioned to consider carefully the provisional nature of the software before using it \
+for decisions that concern personal or public safety or the conduct of business that involves substantial \
+monetary or operational consequences. Information concerning the accuracy and appropriate uses of the software \
+may be obtained from the USGS."
     });
 
     document.getElementById('loadingIndicator').style.display = 'none';

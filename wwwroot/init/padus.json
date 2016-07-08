@@ -1,0 +1,68 @@
+{
+  "homeCamera": {
+    "west": -125.025,
+    "south": 24.043,
+    "east": -66.797,
+    "north": 49.838
+  },
+  "baseMapName": "USGS Topo",
+  "catalog": [
+    {
+      "name": "PAD-US Map Layers",
+      "isOpen": true,
+      "type": "socrata",
+      "items": [
+        {
+          "name": "Manager Name",
+          "isEnabled": true,
+          "type": "esri-mapServer",
+          "url": "https://gis1.usgs.gov/arcgis/rest/services/PADUS1_4/Fine_Agency_Level/MapServer",
+          "attribution": {
+            "text": "USGS",
+            "link": "http://www.usgs.gov"
+          }
+        },
+        {
+          "name": "Manager Type",
+          "isEnabled": false,
+          "type": "esri-mapServer",
+          "url": "https://gis1.usgs.gov/arcgis/rest/services/PADUS1_4/General_Agency_Level/MapServer",
+          "attribution": {
+            "text": "USGS",
+            "link": "http://www.usgs.gov"
+          }
+        },
+        {
+          "name": "GAP Status Code",
+          "isEnabled": false,
+          "type": "esri-mapServer",
+          "url": "https://gis1.usgs.gov/arcgis/rest/services/PADUS1_4/GAP_Status_Code/MapServer",
+          "attribution": {
+            "text": "USGS",
+            "link": "http://www.usgs.gov"
+          }
+        },
+        {
+          "name": "Protected Areas by Manager",
+          "isEnabled": false,
+          "type": "esri-mapServer",
+          "url": "https://gis1.usgs.gov/arcgis/rest/services/PADUS1_4/Protected_Areas_by_Manager/MapServer",
+          "attribution": {
+            "text": "USGS",
+            "link": "http://www.usgs.gov"
+          }
+        },
+        {
+          "name": "Public Access",
+          "isEnabled": false,
+          "type": "esri-mapServer",
+          "url": "https://gis1.usgs.gov/arcgis/rest/services/PADUS1_4/Public_Access/MapServer",
+          "attribution": {
+            "text": "USGS",
+            "link": "http://www.usgs.gov"
+          }
+        }
+      ]
+    }
+  ]
+}

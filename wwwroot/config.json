@@ -1,10 +1,9 @@
 {
     "initializationUrls" : [
-        "terria",
-        "test"
+        "padus"
     ],
     "parameters": {
-        "bingMapsKey": "AkaOmRFtjAb71cXgLwAGtLbj2RpkPKtVqAIroFQsocfurCBILxIeAWPkil7hhRy_",
+        "bingMapsKey": null,
         "googleUrlShortenerKey": null,
         "googleAnalyticsKey": null,
         "googleAnalyticsOptions": null,
@@ -20,16 +19,20 @@
             "devHostRegex-OPTIONAL": "\\b(staging|preview|test|dev)\\.",
             "enableOnLocalhost": false
         },
-        "developerAttribution-CHANGETHIS": {
-            "text": "Your organisation",
-            "link": "http://www.example.com"
+        "developerAttribution": {
+            "text": "United States Geological Survey (USGS)",
+            "link": "https://www.usgs.gov/"
         },
-        "appName": "Terria Map",
-        "supportEmail-CHANGETHIS": "help@example.com",
+        "appName": "PAD-US Map",
+        "initialBaseMap": "Bing Maps Aerial with Labels",
         "brandBarElements": [
             "",
-            "<a target=\"_blank\" href=\"http://www.nicta.com.au\"><img src=\"images/terria_logo.png\" height=\"52\" title=\"Version: {{version}}\" /></a>",
+            "<span id=\"beta-banner\" data-bind=\"visible: displayBetaBanner, click: displayProvisionalWarning\">beta</span>",
+            "<a style=\"float: left;\" target=\"_blank\" href=\"http://www.usgs.gov\"><img src=\"images/usgs-logo-transparent.png\" height=\"52\" title=\"Version: {{version}}\" /></a>",
             ""
+        ],
+        "bindBrandBarElements": [
+            "beta-banner"
         ]
     }
 }
