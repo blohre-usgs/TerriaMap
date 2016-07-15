@@ -48,16 +48,12 @@ var BingMapsSearchProviderViewModel = require('terriajs/lib/ViewModels/BingMapsS
 var BrandBarViewModel = require('terriajs/lib/ViewModels/BrandBarViewModel');
 var CatalogItemNameSearchProviderViewModel = require('terriajs/lib/ViewModels/CatalogItemNameSearchProviderViewModel');
 var createPadusBaseMapOptions = require('terriajs/lib/ViewModels/createPadusBaseMapOptions');
-// var createAustraliaBaseMapOptions = require('terriajs/lib/ViewModels/createAustraliaBaseMapOptions');
-// var createGlobalBaseMapOptions = require('terriajs/lib/ViewModels/createGlobalBaseMapOptions');
 var createToolsMenuItem = require('terriajs/lib/ViewModels/createToolsMenuItem');
 var DataCatalogTabViewModel = require('terriajs/lib/ViewModels/DataCatalogTabViewModel');
 var DistanceLegendViewModel = require('terriajs/lib/ViewModels/DistanceLegendViewModel');
 var DragDropViewModel = require('terriajs/lib/ViewModels/DragDropViewModel');
 var ExplorerPanelViewModel = require('terriajs/lib/ViewModels/ExplorerPanelViewModel');
 var FeatureInfoPanelViewModel = require('terriajs/lib/ViewModels/FeatureInfoPanelViewModel');
-var GazetteerSearchProviderViewModel = require('terriajs/lib/ViewModels/GazetteerSearchProviderViewModel');
-var GNAFSearchProviderViewModel = require('terriajs/lib/ViewModels/GNAFSearchProviderViewModel.js');
 var GoogleUrlShortener = require('terriajs/lib/Models/GoogleUrlShortener');
 var LocationBarViewModel = require('terriajs/lib/ViewModels/LocationBarViewModel');
 var MenuBarItemViewModel = require('terriajs/lib/ViewModels/MenuBarItemViewModel');
@@ -139,7 +135,6 @@ terria.start({
 
     // Create the various base map options.
     var allBaseMaps = createPadusBaseMapOptions(terria);
-    // var allBaseMaps = createGlobalBaseMapOptions(terria);
     var initialBaseMap = terria.configParameters.initialBaseMap || 'USGS Topo';
     selectBaseMap(terria, allBaseMaps, initialBaseMap, true);
 
@@ -265,12 +260,6 @@ terria.start({
                     new BingMapsSearchProviderViewModel({
                         terria: terria,
                         key: configuration.bingMapsKey
-                    }),
-                    new GazetteerSearchProviderViewModel({
-                        terria: terria
-                    }),
-                    new GNAFSearchProviderViewModel({
-                        terria: terria
                     })
                 ]
             })
