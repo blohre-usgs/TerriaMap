@@ -29,9 +29,9 @@
     "node-notifier": "^4.5.0",
     "raw-loader": "^0.5.1",
     "semver": "^5.0.0",
-    "terriajs": "3.5.0",
+    "terriajs": "git+https://my.usgs.gov/bitbucket/scm/bcb/terriajs.git#050a5965ccedeba8cee9256048f745e8fba869aa",
     "terriajs-catalog-editor": "^0.2.0",
-    "terriajs-cesium": "1.20.1",
+    "terriajs-cesium": "git+https://my.usgs.gov/bitbucket/scm/bcb/terriajs-cesium.git#f0ac263c1f7a6c546a3bfedce80c6c27ea2a29ca",
     "terriajs-schema": "latest",
     "webpack": "^1.12.14"
   },
