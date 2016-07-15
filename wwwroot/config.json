@@ -3,7 +3,7 @@
         "padus"
     ],
     "parameters": {
-        "bingMapsKey": null,
+        "bingMapsKey": "AkaOmRFtjAb71cXgLwAGtLbj2RpkPKtVqAIroFQsocfurCBILxIeAWPkil7hhRy_",
         "googleUrlShortenerKey": null,
         "googleAnalyticsKey": null,
         "googleAnalyticsOptions": null,
@@ -24,7 +24,7 @@
             "link": "https://www.usgs.gov/"
         },
         "appName": "PAD-US Map",
-        "initialBaseMap": "Bing Maps Aerial with Labels",
+        "initialBaseMap": "USGS Topo",
         "brandBarElements": [
             "",
             "<span id=\"beta-banner\" data-bind=\"visible: displayBetaBanner, click: displayProvisionalWarning\">beta</span>",
